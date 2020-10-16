@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter_boilerplate/feature/authentication/resource/user_repository.dart';
 import 'package:meta/meta.dart';
+import 'package:sunnah/feature/authentication/resource/user_repository.dart';
 
 import 'authentication_event.dart';
 import 'authentication_state.dart';
@@ -10,7 +10,8 @@ class AuthenticationBloc
   final UserRepository userRepository;
 
   AuthenticationBloc({@required this.userRepository})
-      : assert(userRepository != null);
+      : assert(userRepository != null),
+        super(AuthenticationUninitialized());
 
   @override
   AuthenticationState get initialState => AuthenticationUninitialized();

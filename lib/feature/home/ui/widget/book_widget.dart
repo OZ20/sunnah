@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/feature/home/model/book.dart';
+import 'package:sunnah/feature/home/model/book.dart';
 
 class BookWidget extends StatelessWidget {
   final Book book;

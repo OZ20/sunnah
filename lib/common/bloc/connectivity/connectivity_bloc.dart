@@ -2,12 +2,14 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:connectivity/connectivity.dart';
-import 'package:flutter_boilerplate/common/bloc/connectivity/connectivity_event.dart';
-import 'package:flutter_boilerplate/common/bloc/connectivity/connectivity_state.dart';
+import 'package:sunnah/common/bloc/connectivity/connectivity_event.dart';
+import 'package:sunnah/common/bloc/connectivity/connectivity_state.dart';
 import 'package:rxdart/rxdart.dart';
 
 class ConnectivityBloc extends Bloc<ConnectivityEvent, ConnectivityState> {
   StreamSubscription subscription;
+
+  ConnectivityBloc(ConnectivityState initialState) : super(initialState);
 
   @override
   ConnectivityState get initialState => AppStarted();
@@ -19,15 +21,12 @@ class ConnectivityBloc extends Bloc<ConnectivityEvent, ConnectivityState> {
   }
 
   @override
-  Stream<ConnectivityState> transformEvents(
-    Stream<ConnectivityEvent> events,
-    Stream<ConnectivityState> Function(ConnectivityEvent event) next,
-  ) {
+  Stream<Transition<ConnectivityEvent, ConnectivityState>> transformEvents(Stream<ConnectivityEvent> events, transitionFn) {
     return super.transformEvents(
       events.debounceTime(
         const Duration(milliseconds: 500),
       ),
-      next,
+      transitionFn,
     );
   }
 

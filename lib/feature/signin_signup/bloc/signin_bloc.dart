@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:flutter_boilerplate/common/http/response.dart';
-import 'package:flutter_boilerplate/feature/authentication/bloc/index.dart';
-import 'package:flutter_boilerplate/feature/signin_signup/bloc/index.dart';
-import 'package:flutter_boilerplate/feature/signin_signup/resources/auth_repository.dart';
+import 'package:sunnah/common/http/response.dart';
+import 'package:sunnah/feature/authentication/bloc/index.dart';
+import 'package:sunnah/feature/signin_signup/bloc/index.dart';
+import 'package:sunnah/feature/signin_signup/resources/auth_repository.dart';
 import 'package:meta/meta.dart';
 
 class SignInBloc extends Bloc<SignInEvent, SignInState> {
@@ -15,7 +15,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     @required this.authRepository,
     @required this.authenticationBloc,
   })  : assert(authRepository != null),
-        assert(authenticationBloc != null);
+        assert(authenticationBloc != null), super(SignInInitial());
 
   @override
   SignInState get initialState => SignInInitial();

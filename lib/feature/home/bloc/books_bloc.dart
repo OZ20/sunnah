@@ -1,29 +1,26 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter_boilerplate/common/http/response.dart';
-import 'package:flutter_boilerplate/feature/home/bloc/index.dart';
-import 'package:flutter_boilerplate/feature/home/model/book.dart';
-import 'package:flutter_boilerplate/feature/home/resource/home_repository.dart';
+import 'package:sunnah/common/http/response.dart';
+import 'package:sunnah/feature/home/bloc/index.dart';
+import 'package:sunnah/feature/home/model/book.dart';
+import 'package:sunnah/feature/home/resource/home_repository.dart';
 import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
 
 class BooksBloc extends Bloc<BookEvent, BookState> {
   final HomeRepository homeRepository;
 
-  BooksBloc({@required this.homeRepository}) : assert(homeRepository != null);
+  BooksBloc({@required this.homeRepository}) : assert(homeRepository != null), super(null);
 
   @override
   BookState get initialState => BookEmpty();
 
   @override
-  Stream<BookState> transformEvents(
-    Stream<BookEvent> events,
-    Stream<BookState> Function(BookEvent event) next,
-  ) {
+  Stream<Transition<BookEvent, BookState>> transformEvents(Stream<BookEvent> events, transitionFn) {
     return super.transformEvents(
       events.debounceTime(
         const Duration(milliseconds: 500),
       ),
-      next,
+      transitionFn,
     );
   }
 

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_boilerplate/common/constant/env.dart';
-import 'package:flutter_boilerplate/common/http/api_provider.dart';
-import 'package:flutter_boilerplate/common/util/internet_check.dart';
-import 'package:flutter_boilerplate/common/widget/loading_widget.dart';
-import 'package:flutter_boilerplate/feature/authentication/bloc/index.dart';
-import 'package:flutter_boilerplate/feature/home/ui/screen/home_page.dart';
-import 'package:flutter_boilerplate/feature/landing/splash_page.dart';
-import 'package:flutter_boilerplate/feature/signin_signup/resources/auth_repository.dart';
-import 'package:flutter_boilerplate/feature/signin_signup/ui/sign_in_page.dart';
+import 'package:sunnah/common/constant/env.dart';
+import 'package:sunnah/common/http/api_provider.dart';
+import 'package:sunnah/common/util/internet_check.dart';
+import 'package:sunnah/common/widget/loading_widget.dart';
+import 'package:sunnah/feature/authentication/bloc/index.dart';
+import 'package:sunnah/feature/home/ui/screen/home_page.dart';
+import 'package:sunnah/feature/landing/splash_page.dart';
+import 'package:sunnah/feature/signin_signup/resources/auth_repository.dart';
+import 'package:sunnah/feature/signin_signup/ui/sign_in_page.dart';
 
 class LandingPage extends StatelessWidget {
   @override
@@ -24,6 +24,7 @@ class LandingPage extends StatelessWidget {
             return HomePage();
           }
           if (state is AuthenticationUnauthenticated) {
+            // return HomePage();
             return SignInPage(
                 authRepository: AuthRepository(
                     env: RepositoryProvider.of<Env>(context),

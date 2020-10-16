@@ -1,7 +1,7 @@
-simport 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_boilerplate/feature/home/bloc/index.dart';
-import 'package:flutter_boilerplate/feature/home/ui/widget/book_widget.dart';
+import 'package:sunnah/feature/home/bloc/index.dart';
+import 'package:sunnah/feature/home/ui/widget/book_widget.dart';
 
 class HomeWidget extends StatefulWidget {
   const HomeWidget({Key key}) : super(key: key);

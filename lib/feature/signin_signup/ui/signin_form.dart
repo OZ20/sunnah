@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_boilerplate/common/route/routes.dart';
-import 'package:flutter_boilerplate/feature/signin_signup/bloc/index.dart';
-import 'package:flutter_boilerplate/feature/signin_signup/resources/index.dart';
-import 'package:flutter_boilerplate/generated/i18n.dart';
+import 'package:sunnah/common/route/routes.dart';
+import 'package:sunnah/feature/signin_signup/bloc/index.dart';
+import 'package:sunnah/feature/signin_signup/resources/index.dart';
+import 'package:sunnah/generated/i18n.dart';
 
 class SignInForm extends StatefulWidget {
   @override

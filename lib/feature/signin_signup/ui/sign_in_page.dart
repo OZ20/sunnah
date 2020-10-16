@@ -2,11 +2,11 @@ import 'dart:core';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_boilerplate/feature/authentication/bloc/index.dart';
-import 'package:flutter_boilerplate/feature/signin_signup/bloc/index.dart';
-import 'package:flutter_boilerplate/feature/signin_signup/resources/index.dart';
-import 'package:flutter_boilerplate/feature/signin_signup/ui/signin_form.dart';
-import 'package:flutter_boilerplate/generated/i18n.dart';
+import 'package:sunnah/feature/authentication/bloc/index.dart';
+import 'package:sunnah/feature/signin_signup/bloc/index.dart';
+import 'package:sunnah/feature/signin_signup/resources/index.dart';
+import 'package:sunnah/feature/signin_signup/ui/signin_form.dart';
+import 'package:sunnah/generated/i18n.dart';
 
 class SignInPage extends StatelessWidget {
   final AuthRepository authRepository;
@@ -22,9 +22,9 @@ class SignInPage extends StatelessWidget {
           title: Text(S.of(context).sign_in),
         ),
         body: RepositoryProvider(
-          create: (context) => authRepository,
+          create: (dynamic context) => authRepository,
           child: BlocProvider(
-            create: (context) {
+            create: (dynamic context) {
               return SignInBloc(
                 authenticationBloc:
                     BlocProvider.of<AuthenticationBloc>(context),

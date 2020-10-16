@@ -1,7 +1,7 @@
-import 'package:flutter_boilerplate/common/constant/env.dart';
-import 'package:flutter_boilerplate/common/http/api_provider.dart';
-import 'package:flutter_boilerplate/common/http/response.dart';
-import 'package:flutter_boilerplate/common/util/internet_check.dart';
+import 'package:sunnah/common/constant/env.dart';
+import 'package:sunnah/common/http/api_provider.dart';
+import 'package:sunnah/common/http/response.dart';
+import 'package:sunnah/common/util/internet_check.dart';
 import 'package:meta/meta.dart';
 
 import 'auth_api_provider.dart';

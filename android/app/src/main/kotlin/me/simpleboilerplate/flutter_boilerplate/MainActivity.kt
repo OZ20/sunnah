@@ -1,4 +1,4 @@
-package me.simpleboilerplate.flutter_boilerplate
+package com.oz20.sunnah
 
 import android.os.Bundle
 

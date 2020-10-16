@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter_boilerplate/common/http/api_provider.dart';
+import 'package:sunnah/common/http/api_provider.dart';
 import 'package:meta/meta.dart';
 
 class HomeApiProvider {

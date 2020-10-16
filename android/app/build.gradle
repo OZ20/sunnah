@@ -8,7 +8,7 @@ if (localPropertiesFile.exists()) {
 
 def flutterRoot = localProperties.getProperty('flutter.sdk')
 if (flutterRoot == null) {
-    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+    throw new FileNotFoundException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
 }
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
@@ -23,10 +23,11 @@ if (flutterVersionName == null) {
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'base'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -38,33 +39,68 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "me.simpleboilerplate.flutter_boilerplate"
-        minSdkVersion 16
-        targetSdkVersion 28
+        applicationId "com.oz20.sunnah"
+        minSdkVersion 18
+        targetSdkVersion 29
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
-        release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
+        debug {
             signingConfig signingConfigs.debug
+//            applicationVariants.all { variant ->
+//                variant.outputs.all {
+//                    def assembleTaskName = "assemble${variant.name.capitalize()}"
+//                    println('assembleTaskName: ' + assembleTaskName)
+//                    if (rootProject.childProjects['flutter'] != null && tasks.findByName(assembleTaskName)) {
+//                        def linkAPKTask = tasks.create(name: "linkFlutterApk${variant.name.capitalize()}").doLast {
+//                            //soft link apk to flutter module build dir build/host
+//                            ant.symlink(resource: new File(rootProject.projectDir.path + '/app/build'), link: new File(rootProject.childProjects['flutter'].projectDir.parentFile.parent + '/build/host'))
+//                        }
+//                        println('linkAPKTask: ' + linkAPKTask)
+//                        tasks[assembleTaskName].finalizedBy = [linkAPKTask]
+//                    }
+//                }
+//            }
+//            applicationVariants.all { variant ->
+//                variant.outputs.all {
+//                    outputFileName = "app-${variant.getName()}.apk"
+//                    println('variant name: ' + variant.getName() + ' outputFileName: ' + outputFileName)
+//                }
+//            }
+        }
+        release {
+            signingConfig signingConfigs.debug
+//            applicationVariants.all { variant ->
+//                variant.outputs.all {
+//                    outputFileName = "app-${variant.getName()}.apk"
+//                }
+//            }
         }
     }
 
-    flavorDimensions "flavor-type"
+    flavorDimensions "flavor"
 
-    productFlavors{
-        development{
-            dimension "flavor-type"
+    productFlavors {
+        development {
+            dimension "flavor"
+            applicationId "com.oz20.sunnah.dev"
+            versionCode 1
+            versionName "1.0"
         }
-        staging{
-            dimension "flavor-type"
+        staging {
+            dimension "flavor"
+            applicationId "com.oz20.sunnah.stg"
+            versionCode 1
+            versionName "1.0"
         }
-        production{
-            dimension "flavor-type"
+        production {
+            dimension "flavor"
+            applicationId "com.oz20.sunnah"
+            versionCode 1
+            versionName "1.0"
         }
     }
 }

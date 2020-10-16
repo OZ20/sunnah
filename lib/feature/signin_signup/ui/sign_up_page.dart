@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_boilerplate/feature/authentication/bloc/index.dart';
-import 'package:flutter_boilerplate/feature/signin_signup/bloc/index.dart';
-import 'package:flutter_boilerplate/feature/signin_signup/resources/index.dart';
-import 'package:flutter_boilerplate/generated/i18n.dart';
+import 'package:sunnah/feature/authentication/bloc/index.dart';
+import 'package:sunnah/feature/signin_signup/bloc/index.dart';
+import 'package:sunnah/feature/signin_signup/resources/index.dart';
+import 'package:sunnah/generated/i18n.dart';
 
 import 'signup_form.dart';
 
@@ -17,19 +17,32 @@ class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(S.of(context).sign_in),
-      ),
-      body: BlocProvider(
-        create: (context) {
-          return SignInBloc(
-            authenticationBloc: BlocProvider.of<AuthenticationBloc>(context),
-            authRepository: authRepository,
-          );
-        },
-        child: SignUpForm(),
-      ),
-    );
+        appBar: AppBar(
+          title: Text(S.of(context).sign_in),
+        ),
+        body: MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (dynamic context) {
+                return SignInBloc(
+                  authenticationBloc:
+                      BlocProvider.of<AuthenticationBloc>(context),
+                  authRepository: authRepository,
+                );
+              },
+            ),
+            BlocProvider(
+              create: (dynamic context) {
+                return SignUpBloc(
+                  authenticationBloc:
+                      BlocProvider.of<AuthenticationBloc>(context),
+                  authRepository: authRepository,
+                );
+              },
+            ),
+          ],
+          child: SignUpForm(),
+        ));
   }
 }
 
